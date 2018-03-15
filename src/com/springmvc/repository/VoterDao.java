@@ -1,29 +1,43 @@
 package com.springmvc.repository;
 
-public class VoterDao implements Repository{
+import java.util.List;
+
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Query;
+
+import com.springmvc.common.DatabaseUtils;
+
+@org.springframework.stereotype.Repository
+public class VoterDao implements Repository {
 
 	@Override
-	public <T> T create(T entity) {
-		
-		return null;
-	}
-
-	@Override
-	public <T> T uodate(T entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <T> T read(String key) {
-		// TODO Auto-generated method stub
-		return null;
+	public <T> void create(T voter) {
+		MongoOperations mongoOperations = DatabaseUtils.getInstance();
+		mongoOperations.save(voter);
 	}
 
 	@Override
 	public void delete(String key) {
-		// TODO Auto-generated method stub
-		
+	}
+
+	@Override
+	public <T> void update(T entity) {
+	}
+
+	@Override
+	public <T> List<T> readAll(Class<T> entity) {
+		MongoOperations mongoOperations = DatabaseUtils.getInstance();
+		return mongoOperations.findAll(entity);
+	}
+
+	@Override
+	public <T> void deleteAll(T entity) {
+	}
+
+	@Override
+	public <T> T read(Query query, Class<T> entityClass) {
+		MongoOperations mongoOperations = DatabaseUtils.getInstance();
+		return (T) mongoOperations.findOne(query, entityClass);
 	}
 
 }

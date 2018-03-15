@@ -3,16 +3,19 @@
  */
 package com.springmvc.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * @author debiray
  *
  */
+@Document(collection="VOTERS")
 public class Voter {
-
-	private String voterId;
 
 	private String voterName;
 
+	@Id
 	private String emailId;
 
 	private String phoneNumber;
@@ -20,14 +23,6 @@ public class Voter {
 	private String nationality;
 
 	private Address address;
-
-	public String getVoterId() {
-		return voterId;
-	}
-
-	public void setVoterId(String voterId) {
-		this.voterId = voterId;
-	}
 
 	public String getVoterName() {
 		return voterName;
@@ -67,5 +62,11 @@ public class Voter {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "Voter [voterName=" + voterName + ", emailId=" + emailId + ", phoneNumber=" + phoneNumber
+				+ ", nationality=" + nationality + ", address=" + address + "]";
 	}
 }
