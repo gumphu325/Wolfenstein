@@ -3,12 +3,19 @@
  */
 package com.springmvc.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * @author debiray
  *
  */
+@Document(collection = "ADDRESS")
 public class Address {
 
+	@Id
+	private String id;
+	
 	private String addressLine1;
 
 	private String addressLine2;

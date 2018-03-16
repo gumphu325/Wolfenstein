@@ -10,6 +10,8 @@ public interface VoterRegistrationService {
 
 	void registerVoter(Voter voter);
 
+	List<Voter> readVoter(Voter voter);
+	
 	Voter readVoter(String name);
 
 }

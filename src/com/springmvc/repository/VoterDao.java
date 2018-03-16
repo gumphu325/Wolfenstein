@@ -37,7 +37,7 @@ public class VoterDao implements Repository {
 	@Override
 	public <T> T read(Query query, Class<T> entityClass) {
 		MongoOperations mongoOperations = DatabaseUtils.getInstance();
-		return (T) mongoOperations.findOne(query, entityClass);
+		return (T) mongoOperations.find(query, entityClass);
 	}
 
 }

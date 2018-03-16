@@ -36,6 +36,12 @@ public class VoterRegistrationServiceImpl implements VoterRegistrationService {
 		return voter;
 	}
 
-	
-
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Voter> readVoter(Voter voter) {
+		Query query = new Query(Criteria.where("voterName").is(voter.getVoterName()));
+		query.addCriteria(Criteria.where("emailId").is(voter.getEmailId()));
+		query.addCriteria(Criteria.where("address.pincode").is(voter.getAddress().getPincode()));
+		return (List<Voter>) voterDao.read(query, Voter.class);
+	}
 }
